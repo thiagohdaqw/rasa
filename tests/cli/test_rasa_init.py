@@ -9,6 +9,7 @@ from rasa.cli import scaffold
 from tests.conftest import enable_cache
 from tests.core.channels.test_cmdline import mock_stdin
 
+from tests.cli.conftest import RASA_EXECUTABLE
 
 def test_init_using_init_dir_option(run_with_stdin: Callable[..., RunResult]):
     os.makedirs("./workspace")
@@ -43,7 +44,7 @@ def test_init_help(run: Callable[..., RunResult]):
     output = run("init", "--help")
 
     help_text = (
-        "usage: rasa init [-h] [-v] [-vv] [--quiet] [--no-prompt] [--init-dir INIT_DIR]"
+        "usage: {RASA_EXECUTABLE} init [-h] [-v] [-vv] [--quiet] [--no-prompt] [--init-dir INIT_DIR]"
     )
 
     lines = help_text.split("\n")
